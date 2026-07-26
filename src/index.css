@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ivory-50 text-espresso-700 font-sans antialiased;
+    font-feature-settings: 'liga' 1, 'kern' 1;
+  }
+  ::selection {
+    @apply bg-champagne-300 text-espresso-800;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Thin uppercase eyebrow label */
+  .eyebrow {
+    @apply font-sans text-xs uppercase tracking-widest-2 text-champagne-600;
+  }
+  /* Reveal-on-scroll initial state (toggled by IntersectionObserver) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.24s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+  .reveal-delay-4 { transition-delay: 0.48s; }
+}
+
+/* Custom scrollbar — subtle, on-brand */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF5EC;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8BC8A;
+  border-radius: 999px;
+  border: 2px solid #FAF5EC;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C9A86A;
+}
